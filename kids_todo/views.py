@@ -1,11 +1,16 @@
 from datetime import date as date_cls
 from django.utils import timezone
+from django.shortcuts import render
+from django.http import HttpResponse 
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
 from .models import TaskTemplate, DailyTask
 from .serializers import TaskTemplateSerializer, DailyTaskSerializer
+
+def home_view(request):
+    return HttpResponse("<h1>Welcome to the Backend API!</h1>")
 
 class TaskTemplateViewSet(viewsets.ModelViewSet):
     queryset = TaskTemplate.objects.all()
